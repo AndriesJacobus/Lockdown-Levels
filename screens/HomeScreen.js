@@ -35,13 +35,14 @@ export default function HomeScreen() {
         contentContainerStyle={styles.contentContainer} >
 
         <View style={styles.getStartedContainer}>
-          <Text style={styles.getStartedText}>Testing text styles:</Text>
+          <Text style={styles.getStartedText}>Text styles we will be using:</Text>
 
-          <View style = {{marginTop: 15,}}>
-            <MonoText>screens/HomeScreen.js</MonoText>
-            <BalooR>This: screens/HomeScreen.js</BalooR>
-            <BalooM>This: screens/HomeScreen.js</BalooM>
-          </View>
+          <Text style={styles.getStartedText}>For code:</Text>
+          <MonoText>screens/HomeScreen.js</MonoText>
+
+          <Text style={styles.getStartedText}>For headings:</Text>
+          <BalooR>This: screens/HomeScreen.js</BalooR>
+          <BalooM>This: screens/HomeScreen.js</BalooM>
         </View>
       </ScrollView>
     </View>
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 15,
   },
   welcomeContainer: {
     alignItems: "center",
@@ -104,6 +105,7 @@ const styles = StyleSheet.create({
     color: "rgba(96,100,109, 1)",
     lineHeight: 24,
     textAlign: "center",
+    marginTop: 15,
   },
   tabBarInfoContainer: {
     position: "absolute",
