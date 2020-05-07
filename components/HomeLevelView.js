@@ -1,8 +1,11 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import { StyleSheet, View, ScrollView, Text } from "react-native";
+import { StyleSheet, View, ScrollView, Text, Dimensions } from "react-native";
 import { Provider } from "react-native-paper";
 import { MonoText, BalooM, BalooR } from "../components/StyledText";
+import Colors from "../constants/Colors";
+
+const width = Dimensions.get('window').width;
 
 export class HomeLevelView extends Component {
   _isMounted = false;
@@ -11,55 +14,165 @@ export class HomeLevelView extends Component {
     super(props);
 
     this.state = {
-      //
+      levelDeviders: [],
+      showLevels: false,
     };
   }
 
   componentDidMount() {
     this._isMounted = true;
+
+    this.setDeviders();
+  }
+
+  setDeviders() {
+    let localDeviders = [];
+
+    for (let i = this.props.levels; i > 0; i--) {
+      localDeviders.push({
+        name: "Level " + i,
+      });
+    }
+
+    this.setState({
+      levelDeviders: localDeviders,
+      showLevels: true,
+    });
   }
 
   componentWillUnmount() {
     this._isMounted = false;
   }
 
+  addLevel(name) {
+    return <View style={styles.rowStyle}>
+      <View
+        style={{
+          height: 1,
+          width: 50,
+          borderRadius: 1,
+          borderWidth: 1,
+          borderColor: Colors.tabIconSelected,
+          marginLeft: -5,
+          marginTop: 10,
+          marginRight: 5,
+        }} >
+      </View>
+
+      <BalooR>{name}</BalooR>
+    </View>
+  }
+
   render() {
     return (
-      <Provider style={{ paddingTop: 15 }}>
+      <Provider>
+        
+        <View style={styles.rowStyle}>
+          <View style={styles.levelStyle}></View>
+
+          <ScrollView
+            style={styles.container}
+            contentContainerStyle={styles.contentContainer} >
+            
+
+            <View style={styles.getStartedContainer}>
+              <Text style={styles.getStartedText}>
+                Text styles we will be using:
+              </Text>
+
+              <Text style={styles.getStartedText}>For code:</Text>
+              <MonoText>screens/HomeScreen.js</MonoText>
+
+              <Text style={styles.getStartedText}>For headings:</Text>
+              <BalooR>This: screens/HomeScreen.js</BalooR>
+              <BalooM>This: screens/HomeScreen.js</BalooM>
+            </View>
+          </ScrollView>
+        </View>
+
         <ScrollView
-          style={styles.container}
-          contentContainerStyle={styles.contentContainer} >
+          style = {{
+            position: "absolute",
+            width: "22%",
+            marginTop: '5%',
+            height: '90%',
+          }}
+          >
+          {
+            (this.state.showLevels == true) ? (
+              
+              this.state.levelDeviders.map((element, index) => {
 
-          <View style={styles.getStartedContainer}>
+                return <View
+                  key={index + "v1"}
+                  style={{
+                    marginLeft: 10,
+                    paddingBottom: 15,
+                    marginTop: (width / this.props.levels) - (width * 0.02),
+                  }}>
 
-            <Text style={styles.getStartedText}>
-              Text styles we will be using:
-            </Text>
+                  <BalooR key={index + "t"} style={{
+                    marginLeft: 30,
+                  }}>{element.name}</BalooR>
 
-            <Text style={styles.getStartedText}>For code:</Text>
-            <MonoText>screens/HomeScreen.js</MonoText>
+                  <View
+                    key={index + "v2"}
+                    style={{
+                      height: 1,
+                      width: '100%',
+                      borderRadius: 1,
+                      borderWidth: 1,
+                      borderColor: Colors.tabIconSelected,
+                      marginLeft: -5,
+                      marginRight: 5,
+                    }} >
+                  </View>
+                </View>
+              })
 
-            <Text style={styles.getStartedText}>For headings:</Text>
-            <BalooR>This: screens/HomeScreen.js</BalooR>
-            <BalooM>This: screens/HomeScreen.js</BalooM>
-
-          </View>
-
+            ) :
+              null
+          }
         </ScrollView>
       </Provider>
     );
   }
 }
 
+HomeLevelView.propTypes = {
+  levels: PropTypes.number,
+};
+
 const styles = StyleSheet.create({
-  container: {
+  rowStyle: {
+    flexDirection: "row",
+    paddingTop: 15,
+    paddingBottom: 15,
     flex: 1,
-    backgroundColor: "#fff",
   },
+
+  levelStyle: {
+    height: "100%",
+    width: "10%",
+    borderRadius: 1,
+    borderStyle: "dashed",
+    borderWidth: 4,
+    borderColor: Colors.tabIconSelected,
+    marginLeft: -10,
+  },
+
+  container: {
+    backgroundColor: "#fff",
+    width: "80%",
+    marginLeft: "8%",
+  },
+
   contentContainer: {
     paddingTop: 15,
   },
   getStartedContainer: {
+    position: "relative",
+    flex: 1,
     alignItems: "center",
     marginHorizontal: 50,
     fontSize: 17,
@@ -81,11 +194,6 @@ const styles = StyleSheet.create({
     textAlign: "right",
     justifyContent: "center",
     alignItems: "center",
-  },
-  rowStyle: {
-    flexDirection: "row",
-    textAlign: "right",
-    width: "80%",
   },
   labelText: {
     paddingTop: 32,
