@@ -102,3 +102,10 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Expo stuff
+.expo/
+.expo/package-info.json
+.expo/settings.json
+
+package-lock.json
