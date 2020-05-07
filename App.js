@@ -30,6 +30,19 @@ export default function App(props) {
         await Font.loadAsync({
           ...Ionicons.font,
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+          'alegreya-reg': require('./assets/fonts/Alegreya-Regular.ttf'),
+          'alegreya-medi': require('./assets/fonts/Alegreya-MediumItalic.ttf'),
+          'alegreya-ita': require('./assets/fonts/Alegreya-Italic.ttf'),
+          'baloo-medium': require('./assets/fonts/BalooPaaji2-Medium.ttf'),
+          'baloo-reg': require('./assets/fonts/BalooPaaji2-Regular.ttf'),
+          'baloo-sb': require('./assets/fonts/BalooPaaji2-SemiBold.ttf'),
+          'cinzel-reg': require('./assets/fonts/Cinzel-Regular.ttf'),
+          'cormorant-bol': require('./assets/fonts/CormorantGaramond-Bold.ttf'),
+          'cormorant-reg': require('./assets/fonts/CormorantGaramond-Regular.ttf'),
+          'cormorant-lig': require('./assets/fonts/CormorantGaramond-Light.ttf'),
+          'cormorant-medi': require('./assets/fonts/CormorantGaramond-MediumItalic.ttf'),
+          'creteRoundR': require('./assets/fonts/CreteRound-Regular.ttf'),
+          'creteRoundI': require('./assets/fonts/CreteRound-Italic.ttf'),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service

@@ -2,8 +2,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 
 import TabBarIcon from '../components/TabBarIcon';
+import { Entypo } from '@expo/vector-icons'; 
+
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import InfoScreen from '../screens/InfoScreen';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -15,21 +17,31 @@ export default function BottomTabNavigator({ navigation, route }) {
   navigation.setOptions({ headerTitle: getHeaderTitle(route) });
 
   return (
-    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
+    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}
+      tabBarOptions={{
+        style: {
+          height: 90,
+        },
+        labelStyle: {
+          marginTop: 0,
+        },
+      }}>
+
       <BottomTab.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          title: 'Get Started',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
+          title: 'Home',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} itype="ion" name="ios-list" />,
         }}
       />
       <BottomTab.Screen
-        name="Links"
-        component={LinksScreen}
+        name="Info"
+        component={InfoScreen}
         options={{
-          title: 'Resources',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          title: 'Info',
+          tabBarIcon: ({ focused }) => 
+            <TabBarIcon focused={focused} itype="en" name="info" />,
         }}
       />
     </BottomTab.Navigator>
@@ -41,8 +53,8 @@ function getHeaderTitle(route) {
 
   switch (routeName) {
     case 'Home':
-      return 'How to get started';
-    case 'Links':
-      return 'Links to learn more';
+      return 'Home';
+    case 'Info':
+      return 'Level Info';
   }
 }
