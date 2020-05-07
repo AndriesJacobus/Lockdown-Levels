@@ -187,46 +187,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 15,
   },
-  bannerText: {
-    fontSize: 24,
-    color: "#083D77",
-    textAlign: "left",
-    textAlign: "right",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  labelText: {
-    paddingTop: 32,
-    paddingRight: 10,
-    fontSize: 20,
-    color: "#083D77",
-    position: "relative",
-    width: "65%",
-  },
-  dropdownStyle: {
-    width: "35%",
-    paddingBottom: 15,
-    position: "relative",
-  },
-  horizontalLine: {
-    borderBottomColor: "lightblue",
-    borderBottomWidth: 2,
-    width: "80%",
-  },
-  tempText: {
-    paddingTop: 95,
-    paddingRight: 15,
-    fontSize: 20,
-    color: "#083D77",
-    position: "relative",
-    width: "50%",
-  },
-  tempContainer: {
-    height: "50%",
-    paddingLeft: 15,
-    position: "relative",
-    width: "50%",
-  },
 });
 
 export default HomeLevelView;
