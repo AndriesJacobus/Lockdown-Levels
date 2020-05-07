@@ -28,10 +28,6 @@ export class HomeScreen extends Component {
   }
 }
 
-HomeScreen.navigationOptions = {
-  header: null,
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

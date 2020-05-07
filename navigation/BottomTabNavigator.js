@@ -1,9 +1,8 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
-
+import { Platform, } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabBarIcon from '../components/TabBarIcon';
-import { Entypo } from '@expo/vector-icons'; 
-
+import { Entypo } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
 import InfoScreen from '../screens/InfoScreen';
 
@@ -16,16 +15,29 @@ export default function BottomTabNavigator({ navigation, route }) {
   // https://reactnavigation.org/docs/en/screen-options-resolution.html
   navigation.setOptions({ headerTitle: getHeaderTitle(route) });
 
+  let options = {}
+
+  if (Platform.OS === 'ios') {
+    options = {
+      style: {
+        paddingTop: 10,
+        paddingBottom: 25,
+      },
+    }
+  } else {
+    options = {
+      style: {
+        paddingTop: 10,
+      },
+      labelStyle: {
+        marginTop: 5,
+      },
+    }
+  }
+
   return (
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}
-      tabBarOptions={{
-        style: {
-          height: 90,
-        },
-        labelStyle: {
-          marginTop: 0,
-        },
-      }}>
+      tabBarOptions={options}>
 
       <BottomTab.Screen
         name="Home"
