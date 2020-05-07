@@ -1,52 +1,31 @@
+import React, { Component } from 'react';
 import * as WebBrowser from "expo-web-browser";
-import * as React from "react";
-
-import {
-  Image,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import {
-  MonoText,
-  Alegreya,
-  BalooM,
-  BalooR,
-  BalooSB,
-  Cinzel,
-  CormorantB,
-  CormorantL,
-  CormorantR,
-  CormorantMI,
-  AlegreyaI,
-  AlegreyaMI,
-  CreteRoundR,
-  CreteRoundI
-} from "../components/StyledText";
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, } from "react-native";
+import { MonoText, BalooM, BalooR, } from "../components/StyledText";
 import { ScrollView } from "react-native-gesture-handler";
 
-export default function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer} >
-
-        <View style={styles.getStartedContainer}>
-          <Text style={styles.getStartedText}>Text styles we will be using:</Text>
-
-          <Text style={styles.getStartedText}>For code:</Text>
-          <MonoText>screens/HomeScreen.js</MonoText>
-
-          <Text style={styles.getStartedText}>For headings:</Text>
-          <BalooR>This: screens/HomeScreen.js</BalooR>
-          <BalooM>This: screens/HomeScreen.js</BalooM>
-        </View>
-      </ScrollView>
-    </View>
-  );
+export class HomeScreen extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer} >
+  
+          <View style={styles.getStartedContainer}>
+            <Text style={styles.getStartedText}>Text styles we will be using:</Text>
+  
+            <Text style={styles.getStartedText}>For code:</Text>
+            <MonoText>screens/HomeScreen.js</MonoText>
+  
+            <Text style={styles.getStartedText}>For headings:</Text>
+            <BalooR>This: screens/HomeScreen.js</BalooR>
+            <BalooM>This: screens/HomeScreen.js</BalooM>
+          </View>
+        </ScrollView>
+      </View>
+    );
+  }
 }
 
 HomeScreen.navigationOptions = {
@@ -147,3 +126,5 @@ const styles = StyleSheet.create({
     color: "#2e78b7",
   },
 });
+
+export default HomeScreen;
