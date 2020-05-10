@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import { StyleSheet, View, ScrollView, Dimensions, Text, TouchableOpacity, Platform } from "react-native";
+import { StyleSheet, View, ScrollView, Dimensions, Text, TouchableOpacity, Platform, Animated } from "react-native";
 import { Provider } from "react-native-paper";
 import { MonoText, BalooM, BalooR } from "../components/StyledText";
 import Colors from "../constants/Colors";
@@ -12,6 +12,7 @@ const height = Dimensions.get("window").height;
 
 export class HomeLevelView extends Component {
   _isMounted = false;
+  animVal = new Animated.Value(0)
 
   constructor(props) {
     super(props);
@@ -20,6 +21,7 @@ export class HomeLevelView extends Component {
       levelDeviders: [],
       showLevels: false,
       currentLevel: this.props.defaultLevel,
+      offset: {},
     };
   }
 
@@ -50,43 +52,138 @@ export class HomeLevelView extends Component {
   }
 
   render() {
+
     return (
       <Provider>
         <View style={styles.rowStyle}>
           <View style={styles.levelStyle} />
 
+          <View
+            style={{
+              paddingLeft: "17%",
+            }}>
+
+            <Svg
+              style={styles.arrowLeft}
+              // width={moderateScale(16.5, 0.6)}
+              width={20}
+              height={height}
+              viewBox="34.5 0 10 100"
+              enable-background="new 34.5 0 10 100" >
+
+              {
+                Platform.OS === "ios" ? [
+                  <Path
+                    key={"p1"}
+                    d={"M 36, -100 c 10 -20, 5 -10, 70 -400 L 45 -100 l -7, 0"}
+                    fill={Colors.customGrey}
+                  />,
+                  <Path
+                    key={"p12"}
+                    d={"M 36, -100 c 10 20, 5 -10, 70 400 L 45 -100 l -7, -1"}
+                    fill={Colors.customGrey}
+                  />
+                ] : [
+                  <Path
+                    key={"p1"}
+                    d={"M 36, -60 c 10 -20, 5 -10, 70 -400 L 45 -60 l -7, 0"}
+                    fill={Colors.customGrey}
+                  />,
+                  <Path
+                    key={"p2"}
+                    d={"M 36, -60 c 10 20, 5 -10, 70 400 L 45 -60 l -7, -1"}
+                    fill={Colors.customGrey}
+                  />
+                ]
+              }
+              
+            </Svg>
+          </View>
+
           <ScrollView
             style={styles.container}
+            bounces={false}
+            pagingEnabled
+            contentOffset={this.state.offset}
+            scrollEventThrottle={16}
             contentContainerStyle={styles.contentContainer} >
 
             <View style={styles.getStartedContainer}>
               <View style={styles.item}>
                 <View style={styles.balloon}>
                   
-                  <Text style={{ paddingTop: 5, color: "white", textAlign: "center", }}>
-                    Hey! How are you?
-                  </Text>
+                  <View style={styles.levelInfoHeader}>
+                    <BalooM style={{color: "orange", fontSize: 24,}}>
+                      Level {this.state.currentLevel}
+                    </BalooM>
 
-                  <View
-                    style={[styles.arrowContainer, styles.arrowLeftContainer]} >
+                    <Text style={{color: "black", fontSize: 14,}}>
+                      <Text style={{color: "orange", fontSize: 16,}}> Moderate </Text>
+                      to high
+                      <Text style={{color: "orange", fontSize: 16,}}> Spread </Text>
+                      with
+                      <Text style={{color: "orange", fontSize: 16,}}> Moderate Readiness </Text>
+                    </Text>
+                  </View>
 
-                    <Svg
-                      style={styles.arrowLeft}
-                      width={moderateScale(16.5, 0.6)}
-                      height={moderateScale((height * 0.6), 0.6)}
-                      viewBox="34.5 0 10 100"
-                      enable-background="new 34.5 0 10 100" >
+                  <View style={styles.levelInfoHeader}>
+                    <BalooM style={{color: Colors.tabIconSelected, fontSize: 20,}}>
+                      Transport
+                    </BalooM>
 
-                      <Path
-                        d={"M 36, 45 c 10 -20, 5 -10, 70 -400 L 45 45 l -7, 0"}
-                        fill="#A9BCD0"
-                      />
+                    <Text style={{color: "black", fontSize: 14,}}>
+                      aflnafnaofbnaofbaodnaodnaoidbaobaoifboibawo
+                    </Text>
+                  </View>
 
-                      <Path
-                        d={"M 36, 45 c 10 20, 5 -10, 70 400 L 45 45 l -7, -1"}
-                        fill="#A9BCD0"
-                      />
-                    </Svg>
+                  <View style={styles.levelInfoHeader}>
+                    <BalooM style={{color: Colors.tabIconSelected, fontSize: 20,}}>
+                      Movement
+                    </BalooM>
+
+                    <Text style={{color: "black", fontSize: 14,}}>
+                      aflnafnaofbnaofbaodnaodnaoidbaobaoifboibawo
+                    </Text>
+                  </View>
+
+                  <View style={styles.levelInfoHeader}>
+                    <BalooM style={{color: Colors.tabIconSelected, fontSize: 20,}}>
+                      Wholesale and Retail
+                    </BalooM>
+
+                    <Text style={{color: "black", fontSize: 14,}}>
+                      aflnafnaofbnaofbaodnaodnaoidbaobaoifboibawo
+                    </Text>
+                  </View>
+
+                  <View style={styles.levelInfoHeader}>
+                    <BalooM style={{color: Colors.tabIconSelected, fontSize: 20,}}>
+                      Wholesale and Retail
+                    </BalooM>
+
+                    <Text style={{color: "black", fontSize: 14,}}>
+                      aflnafnaofbnaofbaodnaodnaoidbaobaoifboibawo
+                    </Text>
+                  </View>
+
+                  <View style={styles.levelInfoHeader}>
+                    <BalooM style={{color: Colors.tabIconSelected, fontSize: 20,}}>
+                      Wholesale and Retail
+                    </BalooM>
+
+                    <Text style={{color: "black", fontSize: 14,}}>
+                      aflnafnaofbnaofbaodnaodnaoidbaobaoifboibawo
+                    </Text>
+                  </View>
+
+                  <View style={styles.levelInfoHeader}>
+                    <BalooM style={{color: Colors.tabIconSelected, fontSize: 20,}}>
+                      Wholesale and Retail
+                    </BalooM>
+
+                    <Text style={{color: "black", fontSize: 14,}}>
+                      aflnafnaofbnaofbaodnaodnaoidbaobaoifboibawo
+                    </Text>
                   </View>
 
                 </View>
@@ -113,7 +210,6 @@ export class HomeLevelView extends Component {
                     marginLeft: 10,
                     paddingBottom: 15,
                     marginBottom: (( (height - 100) * 0.5) / this.props.levels),
-                    
                   }} >
 
                   {
@@ -138,7 +234,7 @@ export class HomeLevelView extends Component {
                   <View
                     key={index + "v2"}
                     style={styles.levelMarkers}
-                  ></View>
+                  />
                 </TouchableOpacity>
 
               );
@@ -172,11 +268,19 @@ const styles = StyleSheet.create({
     marginLeft: -10,
   },
 
-  container: {
-    backgroundColor: "#fff",
-    width: "90%",
-    marginLeft: "4%",
+  levelInfoHeader: {
+    marginTop: 12,
+    marginLeft: 5,
+    padding: 10,
+    // height: "96%",
+    backgroundColor: "white",
+    // backgroundColor: "rgba(255, 255, 255, 0.5)",
+    borderRadius: 20,
+    borderColor: Colors.customGrey,
+    borderWidth: 1,
   },
+
+  // Level Marker
   
   levelMarkerView: {
     position: "absolute",
@@ -214,7 +318,7 @@ const styles = StyleSheet.create({
 
   // Bubble
   item: {
-    marginVertical: moderateScale(7, 2),
+    // marginVertical: moderateScale(7, 2),
     flexDirection: "row",
   },
   itemOut: {
@@ -222,17 +326,20 @@ const styles = StyleSheet.create({
   },
   balloon: {
     width: width * 0.75 - 20,
-    height: (height * 0.7),
+    // height: (height * 0.7),
 
     maxWidth: moderateScale((width * 0.7) - 20, 2),
     paddingHorizontal: moderateScale(10, 2),
     paddingTop: moderateScale(5, 2),
     paddingBottom: moderateScale(7, 2),
 
-    borderRadius: 10,
+    borderRadius: 20,
     textAlign: "center",
 
-    backgroundColor: "#A9BCD0", borderWidth: 1, borderColor: "#A9BCD0",
+    backgroundColor: Colors.customGrey,
+    borderWidth: 1,
+    borderColor: Colors.customGrey,
+
   },
   arrowContainer: {
     position: "absolute",
@@ -254,32 +361,37 @@ const styles = StyleSheet.create({
   },
 
   arrowLeft: {
-    left: moderateScale(-16, 0.6),
-  },
-
-  arrowRight: {
-    right: moderateScale(-6, 0.5),
+    left: -20,
   },
 
   // Other
+
+  container: {
+    backgroundColor: "#fff",
+    width: "90%",
+    // marginLeft: "4%",
+
+    left: -20,
+  },
+
   contentContainer: {
     paddingTop: 15,
   },
   getStartedContainer: {
     position: "relative",
     flex: 1,
-    marginHorizontal: 50,
     fontSize: 17,
     color: "rgba(96,100,109, 1)",
-    lineHeight: 24,
     textAlign: "center",
+    // lineHeight: 24,
+    // marginRight: "20%",
   },
   getStartedText: {
     fontSize: 17,
     color: "rgba(96,100,109, 1)",
-    lineHeight: 24,
     textAlign: "center",
     marginTop: 15,
+    // lineHeight: 24,
   },
 });
 
