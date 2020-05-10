@@ -8,7 +8,7 @@ export class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <HomeLevelView levels={5} />
+        <HomeLevelView levels={5} defaultLevel={4} />
       </View>
     );
   }

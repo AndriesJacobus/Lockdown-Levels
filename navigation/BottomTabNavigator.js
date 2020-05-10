@@ -31,7 +31,7 @@ export default function BottomTabNavigator({ navigation, route }) {
   } else {
     options = {
       style: {
-        height: 60,
+        height: 55,
         paddingTop: 10,
       },
       labelStyle: {
@@ -44,8 +44,8 @@ export default function BottomTabNavigator({ navigation, route }) {
   return (
     <BottomTab.Navigator
       initialRouteName={INITIAL_ROUTE_NAME}
-      tabBarOptions={options}
-    >
+      tabBarOptions={options} >
+
       <BottomTab.Screen
         name="Home"
         component={HomeScreen}
@@ -56,6 +56,7 @@ export default function BottomTabNavigator({ navigation, route }) {
           ),
         }}
       />
+      
       <BottomTab.Screen
         name="Info"
         component={InfoScreen}

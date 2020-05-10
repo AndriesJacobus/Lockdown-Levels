@@ -1,33 +1,11 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import { StyleSheet, View, ScrollView, Dimensions, Text, Image } from "react-native";
+import { StyleSheet, View, ScrollView, Dimensions, Text, TouchableOpacity, Platform } from "react-native";
 import { Provider } from "react-native-paper";
 import { MonoText, BalooM, BalooR } from "../components/StyledText";
 import Colors from "../constants/Colors";
-
-import Svg, {
-  Circle,
-  Ellipse,
-  G,
-  TSpan,
-  TextPath,
-  Path,
-  Polygon,
-  Polyline,
-  Line,
-  Rect,
-  Use,
-  Symbol,
-  Defs,
-  LinearGradient,
-  RadialGradient,
-  Stop,
-  ClipPath,
-  Pattern,
-  Mask,
-} from 'react-native-svg';
-
-import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
+import Svg, { Path, } from 'react-native-svg';
+import { moderateScale } from 'react-native-size-matters';
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -41,6 +19,7 @@ export class HomeLevelView extends Component {
     this.state = {
       levelDeviders: [],
       showLevels: false,
+      currentLevel: this.props.defaultLevel,
     };
   }
 
@@ -55,6 +34,7 @@ export class HomeLevelView extends Component {
 
     for (let i = this.props.levels; i > 0; i--) {
       localDeviders.push({
+        level: i,
         name: "Level " + i,
       });
     }
@@ -69,41 +49,19 @@ export class HomeLevelView extends Component {
     this._isMounted = false;
   }
 
-  addLevel(name) {
-    return (
-      <View style={styles.rowStyle}>
-        <View
-          style={{
-            height: 1,
-            width: 50,
-            borderRadius: 1,
-            borderWidth: 1,
-            borderColor: Colors.tabIconSelected,
-            marginLeft: -5,
-            marginTop: 10,
-            marginRight: 5,
-          }}
-        ></View>
-
-        <BalooR>{name}</BalooR>
-      </View>
-    );
-  }
-
   render() {
     return (
       <Provider>
         <View style={styles.rowStyle}>
-          <View style={styles.levelStyle}></View>
+          <View style={styles.levelStyle} />
 
           <ScrollView
             style={styles.container}
             contentContainerStyle={styles.contentContainer} >
 
             <View style={styles.getStartedContainer}>
-
-              <View style={[styles.item, styles.itemIn]}>
-                <View style={[styles.balloon, { backgroundColor: "#A9BCD0", borderWidth: 1, borderColor: "#A9BCD0", }]}>
+              <View style={styles.item}>
+                <View style={styles.balloon}>
                   
                   <Text style={{ paddingTop: 5, color: "white", textAlign: "center", }}>
                     Hey! How are you?
@@ -117,90 +75,75 @@ export class HomeLevelView extends Component {
                       width={moderateScale(16.5, 0.6)}
                       height={moderateScale((height * 0.6), 0.6)}
                       viewBox="34.5 0 10 100"
-                      enable-background="new 34.5 0 10 100"
-                      >
-
-                      {/* <Path
-                        d="M 38.5, 17.5 c 0, 8.75, 1, 13.5-6, 17.5 C 51.5, 35, 52.5, 17.5, 38.5, 17.5 z"
-                        fill="#A9BCD0"
-                        x="0"
-                        y="0"
-                      /> */}
-
-                      {/* <Path
-                        d="M 38.5, 17.5 c 0, 8.75, 1, 13.5-6, 17.5"
-                        stroke="blue"
-                        stroke-width="5"
-                        fill="none"
-                      /> */}
+                      enable-background="new 34.5 0 10 100" >
 
                       <Path
-                        d="M 36, -40 c 10 -20, 5 -10, 70 -400 L 45 -40 l -7, 0"
-                        stroke="#A9BCD0"
-                        strokeWidth="1"
+                        d={"M 36, 45 c 10 -20, 5 -10, 70 -400 L 45 45 l -7, 0"}
                         fill="#A9BCD0"
                       />
 
                       <Path
-                        d="M 36, -40 c 10 20, 5 -10, 70 400 L 45 -40 l -7, -1"
-                        stroke="#A9BCD0"
-                        strokeWidth="1"
+                        d={"M 36, 45 c 10 20, 5 -10, 70 400 L 45 45 l -7, -1"}
                         fill="#A9BCD0"
                       />
                     </Svg>
                   </View>
+
                 </View>
               </View>
-              
             </View>
+
           </ScrollView>
         </View>
 
         <ScrollView
-          style={{
-            position: "absolute",
-            width: "22%",
-            marginTop: "5%",
-            height: "90%",
-          }}
-        >
-          {this.state.showLevels == true
-            ? this.state.levelDeviders.map((element, index) => {
-                return (
-                  <View
-                    key={index + "v1"}
-                    style={{
-                      marginLeft: 10,
-                      paddingBottom: 15,
-                      marginTop: width / this.props.levels - width * 0.02,
-                    }}
-                  >
+          style={styles.levelMarkerView} >
+
+          {this.state.showLevels == true ?
+            this.state.levelDeviders.map((element, index) => {
+              return (
+                <TouchableOpacity
+                  key={index + "v1"}
+                  onPress={() => {
+                    this.setState({
+                      currentLevel: element.level,
+                    });
+                  }}
+                  style={{
+                    marginLeft: 10,
+                    paddingBottom: 15,
+                    marginBottom: (( (height - 100) * 0.5) / this.props.levels),
+                    
+                  }} >
+
+                  {
+                    element.level == this.state.currentLevel &&
+                    <BalooM
+                      key={index + "t"}
+                      style={[styles.levelMarkerText, Platform.OS === "ios" ? styles.levelMarkerSelectedIos : styles.levelMarkerSelected]} >
+
+                      {element.name}
+                    </BalooM>
+                  }
+                  {
+                    element.level != this.state.currentLevel &&
                     <BalooR
                       key={index + "t"}
-                      style={{
-                        fontSize: 14,
-                        marginLeft: 30,
-                      }}
-                    >
+                      style={styles.levelMarkerText} >
+  
                       {element.name}
                     </BalooR>
+                  }
+                  
+                  <View
+                    key={index + "v2"}
+                    style={styles.levelMarkers}
+                  ></View>
+                </TouchableOpacity>
 
-                    <View
-                      key={index + "v2"}
-                      style={{
-                        height: 1,
-                        width: "100%",
-                        borderRadius: 1,
-                        borderWidth: 1,
-                        borderColor: Colors.tabIconSelected,
-                        marginLeft: -5,
-                        marginRight: 5,
-                      }}
-                    ></View>
-                  </View>
-                );
-              })
-            : null}
+              );
+            })
+          : null}
         </ScrollView>
       </Provider>
     );
@@ -224,39 +167,72 @@ const styles = StyleSheet.create({
     width: "10%",
     borderRadius: 1,
     borderStyle: "dashed",
-    borderWidth: 4,
+    borderWidth: 3,
     borderColor: Colors.tabIconSelected,
     marginLeft: -10,
   },
 
   container: {
     backgroundColor: "#fff",
-    width: "80%",
-    marginLeft: "8%",
+    width: "90%",
+    marginLeft: "4%",
+  },
+  
+  levelMarkerView: {
+    position: "absolute",
+    width: "20%",
+    marginTop: "15%",
+    height: "80%",
+  },
+  
+  levelMarkers: {
+    height: 1,
+    width: 58,
+    borderRadius: 1,
+    borderWidth: 1,
+    borderColor: Colors.tabIconSelected,
+    marginLeft: -5,
+    marginRight: 5,
+  },
+
+  levelMarkerText: {
+    fontSize: 14,
+    marginLeft: 5,
+    backgroundColor: "white",
+  },
+
+  levelMarkerSelected: {
+    color: Colors.tabIconSelected,
+    fontWeight: "bold",
+  },
+
+  levelMarkerSelectedIos: {
+    color: Colors.tabIconSelected,
+    fontWeight: "bold",
+    fontSize: 16,
   },
 
   // Bubble
-
   item: {
     marginVertical: moderateScale(7, 2),
     flexDirection: "row",
   },
-  itemIn: {
-    // marginLeft: 20,
-  },
   itemOut: {
     alignSelf: "flex-end",
-    // marginRight: 20,
   },
   balloon: {
+    width: width * 0.75 - 20,
+    height: (height * 0.7),
+
     maxWidth: moderateScale((width * 0.7) - 20, 2),
     paddingHorizontal: moderateScale(10, 2),
     paddingTop: moderateScale(5, 2),
     paddingBottom: moderateScale(7, 2),
+
     borderRadius: 10,
-    width: width * 0.7 - 20,
-    height: (height * 0.7),
     textAlign: "center",
+
+    backgroundColor: "#A9BCD0", borderWidth: 1, borderColor: "#A9BCD0",
   },
   arrowContainer: {
     position: "absolute",
@@ -286,7 +262,6 @@ const styles = StyleSheet.create({
   },
 
   // Other
-
   contentContainer: {
     paddingTop: 15,
   },
