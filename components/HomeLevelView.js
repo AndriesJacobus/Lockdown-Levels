@@ -7,6 +7,7 @@ import Colors from "../constants/Colors";
 import Svg, { Path, } from 'react-native-svg';
 import { moderateScale } from 'react-native-size-matters';
 import LottieView from 'lottie-react-native';
+import { LevelInfo } from "../components/LevelInfo";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -22,7 +23,30 @@ export class HomeLevelView extends Component {
       levelDeviders: [],
       showLevels: false,
       currentLevel: this.props.defaultLevel,
-      offset: {},
+
+      levelColors: [
+        "green",
+        "lightblue",
+        "orange",
+        "brown",
+        "red",
+      ],
+
+      spread: [
+        "Low",
+        "Moderate",
+        "Moderate",
+        "Moderate to High",
+        "High",
+      ],
+
+      readiness: [
+        "High",
+        "High",
+        "Moderate",
+        "Moderate",
+        "Low",
+      ],
     };
   }
 
@@ -111,8 +135,15 @@ export class HomeLevelView extends Component {
             <View style={styles.getStartedContainer}>
               <View style={styles.item}>
                 <View style={styles.balloon}>
+
+                  <LevelInfo
+                    level={this.state.currentLevel}
+                    levelColor={this.state.levelColors[this.state.currentLevel - 1]}
+                    spread={this.state.spread[this.state.currentLevel - 1]}
+                    readiness={this.state.readiness[this.state.currentLevel - 1]}
+                  />
                   
-                  <View style={styles.levelInfoHeader}>
+                  {/* <View style={styles.levelInfoHeader}>
                     <BalooM style={{color: "orange", fontSize: 24,}}>
                       Level {this.state.currentLevel}
                     </BalooM>
@@ -360,7 +391,7 @@ export class HomeLevelView extends Component {
                         aflnafnaofbnaofbaodnaodnaoidbaobaoifboibaw
                       </Text>
                     </View>
-                  </View>
+                  </View> */}
 
                 </View>
               </View>
