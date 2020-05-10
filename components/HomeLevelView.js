@@ -6,6 +6,7 @@ import { MonoText, BalooM, BalooR } from "../components/StyledText";
 import Colors from "../constants/Colors";
 import Svg, { Path, } from 'react-native-svg';
 import { moderateScale } from 'react-native-size-matters';
+import LottieView from 'lottie-react-native';
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -65,7 +66,6 @@ export class HomeLevelView extends Component {
 
             <Svg
               style={styles.arrowLeft}
-              // width={moderateScale(16.5, 0.6)}
               width={20}
               height={height}
               viewBox="34.5 0 10 100"
@@ -117,8 +117,8 @@ export class HomeLevelView extends Component {
                       Level {this.state.currentLevel}
                     </BalooM>
 
-                    <Text style={{color: "black", fontSize: 14,}}>
-                      <Text style={{color: "orange", fontSize: 16,}}> Moderate </Text>
+                    <Text style={{color: "black", fontSize: 16,}}>
+                      <Text style={{color: "orange", fontSize: 16,}}>Moderate </Text>
                       to high
                       <Text style={{color: "orange", fontSize: 16,}}> Spread </Text>
                       with
@@ -127,63 +127,239 @@ export class HomeLevelView extends Component {
                   </View>
 
                   <View style={styles.levelInfoHeader}>
-                    <BalooM style={{color: Colors.tabIconSelected, fontSize: 20,}}>
-                      Transport
-                    </BalooM>
 
-                    <Text style={{color: "black", fontSize: 14,}}>
-                      aflnafnaofbnaofbaodnaodnaoidbaobaoifboibawo
-                    </Text>
+                    <View style={{ flex: 1, flexDirection: 'row', marginRight: 20, width: "75%", textAlign: "center",}}>
+
+                      <BalooM style={{
+                          color: Colors.tabIconSelected,
+                          fontSize: 20,
+                          alignSelf: "center",
+                          textAlign: "center",
+                          marginLeft: 5,
+                          textDecorationLine: "underline",
+                        }}>
+
+                        Restrictions:
+                      </BalooM>
+
+                      <View
+                          style={{
+                              width: "30%",
+                              maxHeight: 80,
+                              marginLeft: "15%",
+                          }} >
+                          
+                          <LottieView
+                            autoPlay
+                            loop={false}
+                            speed={0.25}
+                            source={require(`../assets/animations/stay-home.json`)}
+                            style={{
+                              height: 75,
+                              flexDirection: "row",
+                            }}
+                          />
+                      </View>
+                    </View>
+
+                    <View style={{ flex: 1, flexDirection: 'row', marginRight: 20, width: "75%",}}>
+                      <View
+                          style={{
+                              width: "30%",
+                              maxHeight: 80,
+                              alignSelf: "center",
+                              left: -5,
+                          }} >
+                          
+                          <LottieView
+                            autoPlay
+                            loop={false}
+                            speed={0.25}
+                            source={require(`../assets/animations/access-denied.json`)}
+                            style={{
+                              height: 50,
+                              flexDirection: "row",
+                            }}
+                          />
+                      </View>
+
+                      <Text style={{color: "black", fontSize: 16, backgroundColor: "rgba(255,255,255, 0.5)",}}>
+                        aflnafnaofbnaofbaodnaodnaoidbaobaoifboibaw
+                        aflnafnaofbnaofbaodnaodnaoidbaobaoifboibaw
+                      </Text>
+                    </View>
+
+                    <View style={{ flex: 1, flexDirection: 'row', marginRight: 20, width: "75%", marginTop: 15,}}>
+                      <View
+                          style={{
+                              width: "30%",
+                              maxHeight: 80,
+                              alignSelf: "center",
+                              left: -5,
+                          }} >
+                          
+                          <LottieView
+                            autoPlay
+                            loop={false}
+                            speed={0.25}
+                            source={require(`../assets/animations/access-denied.json`)}
+                            style={{
+                              height: 50,
+                              flexDirection: "row",
+                            }}
+                          />
+                      </View>
+
+                      <Text style={{color: "black", fontSize: 16, backgroundColor: "rgba(255,255,255, 0.5)",}}>
+                        aflnafnaofbnaofbaodnaodnaoidbaobaoifboibaw
+                        aflnafnaofbnaofbaodnaodnaoidbaobaoifboibaw
+                      </Text>
+                    </View>
+
+                    <View style={{ flex: 1, flexDirection: 'row', marginRight: 20, width: "75%", marginTop: 15,}}>
+                      <View
+                          style={{
+                              width: "30%",
+                              maxHeight: 80,
+                              alignSelf: "center",
+                              left: -5,
+                          }} >
+                          
+                          <LottieView
+                            autoPlay
+                            loop={false}
+                            speed={0.25}
+                            source={require(`../assets/animations/access-denied.json`)}
+                            style={{
+                              height: 50,
+                              flexDirection: "row",
+                            }}
+                          />
+                      </View>
+
+                      <Text style={{color: "black", fontSize: 16, backgroundColor: "rgba(255,255,255, 0.5)",}}>
+                        aflnafnaofbnaofbaodnaodnaoidbaobaoifboibaw
+                        aflnafnaofbnaofbaodnaodnaoidbaobaoifboibaw
+                      </Text>
+                    </View>
                   </View>
 
                   <View style={styles.levelInfoHeader}>
-                    <BalooM style={{color: Colors.tabIconSelected, fontSize: 20,}}>
-                      Movement
-                    </BalooM>
 
-                    <Text style={{color: "black", fontSize: 14,}}>
-                      aflnafnaofbnaofbaodnaodnaoidbaobaoifboibawo
-                    </Text>
-                  </View>
+                    <View style={{ flex: 1, flexDirection: 'row', marginRight: 20, width: "75%", textAlign: "center",}}>
 
-                  <View style={styles.levelInfoHeader}>
-                    <BalooM style={{color: Colors.tabIconSelected, fontSize: 20,}}>
-                      Wholesale and Retail
-                    </BalooM>
+                      <BalooM style={{
+                          color: Colors.tabIconSelected,
+                          fontSize: 20,
+                          alignSelf: "center",
+                          textAlign: "center",
+                          marginLeft: 5,
+                          textDecorationLine: "underline",
+                        }}>
 
-                    <Text style={{color: "black", fontSize: 14,}}>
-                      aflnafnaofbnaofbaodnaodnaoidbaobaoifboibawo
-                    </Text>
-                  </View>
+                        Permissions:
+                      </BalooM>
 
-                  <View style={styles.levelInfoHeader}>
-                    <BalooM style={{color: Colors.tabIconSelected, fontSize: 20,}}>
-                      Wholesale and Retail
-                    </BalooM>
+                      <View
+                          style={{
+                              width: "30%",
+                              maxHeight: 80,
+                              marginLeft: "13%",
+                          }} >
+                          
+                          <LottieView
+                            autoPlay
+                            loop={false}
+                            speed={0.4}
+                            source={require(`../assets/animations/open.json`)}
+                            style={{
+                              height: 75,
+                              flexDirection: "row",
+                            }}
+                          />
+                      </View>
+                    </View>
 
-                    <Text style={{color: "black", fontSize: 14,}}>
-                      aflnafnaofbnaofbaodnaodnaoidbaobaoifboibawo
-                    </Text>
-                  </View>
+                    <View style={{ flex: 1, flexDirection: 'row', marginRight: 20, width: "75%",}}>
+                      <View
+                          style={{
+                              width: "30%",
+                              maxHeight: 80,
+                              alignSelf: "center",
+                              left: -10,
+                          }} >
+                          
+                          <LottieView
+                            autoPlay
+                            loop={false}
+                            speed={0.5}
+                            source={require(`../assets/animations/verified.json`)}
+                            style={{
+                              height: 60,
+                              flexDirection: "row",
+                            }}
+                          />
+                      </View>
 
-                  <View style={styles.levelInfoHeader}>
-                    <BalooM style={{color: Colors.tabIconSelected, fontSize: 20,}}>
-                      Wholesale and Retail
-                    </BalooM>
+                      <Text style={{color: "black", fontSize: 16, backgroundColor: "rgba(255,255,255, 0.5)",}}>
+                        aflnafnaofbnaofbaodnaodnaoidbaobaoifboibaw
+                        aflnafnaofbnaofbaodnaodnaoidbaobaoifboibaw
+                      </Text>
+                    </View>
 
-                    <Text style={{color: "black", fontSize: 14,}}>
-                      aflnafnaofbnaofbaodnaodnaoidbaobaoifboibawo
-                    </Text>
-                  </View>
+                    <View style={{ flex: 1, flexDirection: 'row', marginRight: 20, width: "75%", marginTop: 15,}}>
+                      <View
+                          style={{
+                              width: "30%",
+                              maxHeight: 80,
+                              alignSelf: "center",
+                              left: -10,
+                          }} >
+                          
+                          <LottieView
+                            autoPlay
+                            loop={false}
+                            speed={0.5}
+                            source={require(`../assets/animations/verified.json`)}
+                            style={{
+                              height: 60,
+                              flexDirection: "row",
+                            }}
+                          />
+                      </View>
 
-                  <View style={styles.levelInfoHeader}>
-                    <BalooM style={{color: Colors.tabIconSelected, fontSize: 20,}}>
-                      Wholesale and Retail
-                    </BalooM>
+                      <Text style={{color: "black", fontSize: 16, backgroundColor: "rgba(255,255,255, 0.5)",}}>
+                        aflnafnaofbnaofbaodnaodnaoidbaobaoifboibaw
+                        aflnafnaofbnaofbaodnaodnaoidbaobaoifboibaw
+                      </Text>
+                    </View>
 
-                    <Text style={{color: "black", fontSize: 14,}}>
-                      aflnafnaofbnaofbaodnaodnaoidbaobaoifboibawo
-                    </Text>
+                    <View style={{ flex: 1, flexDirection: 'row', marginRight: 20, width: "75%", marginTop: 15,}}>
+                      <View
+                          style={{
+                              width: "30%",
+                              maxHeight: 80,
+                              alignSelf: "center",
+                              left: -10,
+                          }} >
+                          
+                          <LottieView
+                            autoPlay
+                            loop={false}
+                            speed={0.5}
+                            source={require(`../assets/animations/verified.json`)}
+                            style={{
+                              height: 60,
+                              flexDirection: "row",
+                            }}
+                          />
+                      </View>
+
+                      <Text style={{color: "black", fontSize: 16, backgroundColor: "rgba(255,255,255, 0.5)",}}>
+                        aflnafnaofbnaofbaodnaodnaoidbaobaoifboibaw
+                        aflnafnaofbnaofbaodnaodnaoidbaobaoifboibaw
+                      </Text>
+                    </View>
                   </View>
 
                 </View>
