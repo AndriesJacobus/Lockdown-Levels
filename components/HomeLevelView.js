@@ -3,11 +3,11 @@ import React, { Component } from "react";
 import { StyleSheet, View, ScrollView, Dimensions, Text, TouchableOpacity, Platform, Animated } from "react-native";
 import { Provider } from "react-native-paper";
 import { MonoText, BalooM, BalooR } from "../components/StyledText";
+import { LevelInfo } from "../components/LevelInfo";
 import Colors from "../constants/Colors";
 import Svg, { Path, } from 'react-native-svg';
 import { moderateScale } from 'react-native-size-matters';
 import LottieView from 'lottie-react-native';
-import { LevelInfo } from "../components/LevelInfo";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
