@@ -1,16 +1,12 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  View,
-  Dimensions,
-  Text,
-} from "react-native";
+import { StyleSheet, View, Dimensions, Text, } from "react-native";
 import { Provider } from "react-native-paper";
 import { MonoText, BalooM, BalooR } from "../components/StyledText";
 import Colors from "../constants/Colors";
 import { moderateScale } from "react-native-size-matters";
 import LottieView from "lottie-react-native";
+import Svg, { Path, G} from 'react-native-svg';
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
