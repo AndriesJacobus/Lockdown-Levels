@@ -87,7 +87,7 @@ export class LevelInfo extends Component {
                 autoPlay
                 loop={false}
                 speed={0.25}
-                source={require(`../assets/animations/stay-home.json`)}
+                source={require(`../assets/animations/fight-corona.json`)}
                 style={{
                   height: 75,
                   flexDirection: "row",
@@ -112,7 +112,7 @@ export class LevelInfo extends Component {
                 left: -5,
               }} >
 
-              <LottieView
+              {/* <LottieView
                 autoPlay
                 loop={false}
                 speed={0.25}
@@ -121,7 +121,7 @@ export class LevelInfo extends Component {
                   height: 50,
                   flexDirection: "row",
                 }}
-              />
+              /> */}
             </View>
 
             <Text
@@ -153,7 +153,7 @@ export class LevelInfo extends Component {
                 left: -5,
               }} >
 
-              <LottieView
+              {/* <LottieView
                 autoPlay
                 loop={false}
                 speed={0.25}
@@ -162,7 +162,7 @@ export class LevelInfo extends Component {
                   height: 50,
                   flexDirection: "row",
                 }}
-              />
+              /> */}
             </View>
 
             <Text
@@ -194,7 +194,7 @@ export class LevelInfo extends Component {
                 left: -5,
               }} >
 
-              <LottieView
+              {/* <LottieView
                 autoPlay
                 loop={false}
                 speed={0.25}
@@ -203,7 +203,7 @@ export class LevelInfo extends Component {
                   height: 50,
                   flexDirection: "row",
                 }}
-              />
+              /> */}
             </View>
 
             <Text
@@ -253,7 +253,7 @@ export class LevelInfo extends Component {
                 autoPlay
                 loop={false}
                 speed={0.4}
-                source={require(`../assets/animations/open.json`)}
+                source={require(`../assets/animations/open-for-business.json`)}
                 style={{
                   height: 75,
                   flexDirection: "row",
